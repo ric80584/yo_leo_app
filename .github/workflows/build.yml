@@ -1,36 +1,39 @@
-YAML
 name: Compilar APK Flutter
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, principal ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Descargar codigo del repositorio
+        uses: actions/checkout@v4
 
-      - name: Configurar Java
-        uses: actions/setup-java@v3
+      - name: Configurar Java JDK
+        uses: actions/setup-java@v4
         with:
-          distribution: 'zulu'
+          distribution: 'temurin'
           java-version: '17'
 
-      - name: Configurar Flutter
+      - name: Configurar Flutter SDK
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.x'
+          flutter-version: '3.19.6'
           channel: 'stable'
 
-      - name: Crear estructura de proyecto mínima
-        run: |
-          flutter create . --overwrite
+      - name: Regenerar archivos de configuracion Android
+        run: flutter create . --platforms=android --overwrite
 
-      - name: Compilar APK
-        run: flutter build apk --release
+      - name: Obtener dependencias
+        run: flutter pub get
 
-      - name: Guardar archivo APK ejecutable
+      - name: Compilar APK ejecutable
+        run: flutter build apk --release --no-tree-shake-icons
+
+      - name: Guardar archivo APK
         uses: actions/upload-artifact@v4
         with:
           name: YoLeo-App-Minedu
