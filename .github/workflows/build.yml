@@ -24,11 +24,12 @@ jobs:
           flutter-version: '3.19.6'
           channel: 'stable'
 
-      - name: Reconstruir proyecto Android sobre el código real
+      - name: Crear configuracion Android
         run: |
-          cp lib/main.dart lib/main.dart.bak
+          mkdir -p temp_backup
+          cp lib/main.dart temp_backup/main.dart
           flutter create . --platforms=android --overwrite
-          cp lib/main.dart.bak lib/main.dart
+          cp temp_backup/main.dart lib/main.dart
 
       - name: Obtener dependencias
         run: flutter pub get
