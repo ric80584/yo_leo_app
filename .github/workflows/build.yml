@@ -24,8 +24,8 @@ jobs:
           flutter-version: '3.19.6'
           channel: 'stable'
 
-      - name: Regenerar archivos de configuracion Android
-        run: flutter create . --platforms=android --overwrite
+      - name: Crear plataformas de soporte
+        run: flutter create . --platforms=android
 
       - name: Obtener dependencias
         run: flutter pub get
