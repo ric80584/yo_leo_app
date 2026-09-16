@@ -1,31 +1,3 @@
-«¡YO LEO!» La lectura es divertida
-Documentación técnica y código fuente unificado en Flutter para la creación del ejecutable Android (.APK) adaptado a las tabletas del MINEDU.
-Nota Pedagógica y de Diseño UX/UI: La aplicación funciona 100% offline, incluye sonorización de letras/sílabas, ruleta con engranajes 3D, trazado de motricidad fina y dictado interactivo con teclado QWERTY adaptado.
-1. Resumen de Módulos Integrados
-Módulo
-Componente Principal
-Funcionalidad Integrada
- 
-Cabecera
-Panel Superior & Puchin
-Switch Mayúsculas/Minúsculas, mascota Lorito Puchin con audio y contadores automáticos de sílabas y letras.
-Ruleta 3D
-RuletaLetrasWidget
-Engranajes verticales cíclicos A-Z (incluye Ñ, LL, CH), perillas de validación y control de 3 intentos con pistas.
-Trazo Cursivo
-TrazadoPunteadoWidget
-Lienzo de dibujo táctil sobre fuente Learning Curve Dashed, siempre en minúsculas y con ícono de lápiz dinámico.
-Dictado & Teclado
-DictadoTecladoWidget
-Entrada de voz/micrófono, teclado QWERTY táctil adaptado (con números y Ñ) y lectura silábica interactiva.
-
-2. Estructura de Niveles Pedagógicos
-Nivel 1: Abecedario - Reconocimiento inicial y trazado directo.
-Nivel 2: Sílabas - Formación de la primera sílaba y asociación fonética.
-Nivel 3: Palabras Bisílabas - Construcción de palabras de 2 sílabas en la ruleta.
-Nivel 4: Palabras Trisílabas - Construcción de palabras de 3 sílabas.
-Nivel 5: Sílabas Inversas - Estructuras tipo al, es, in, or, un.
-Nivel 6: Sílabas Trabadas - Estructuras tipo bra, cro, pli, tra.
 3. Código Unificado Completo (main.dart)
 A continuación se presenta la arquitectura completa integrada lista para compilación en Flutter:
 import 'package:flutter/material.dart';
@@ -603,14 +575,3 @@ class _DictadoTecladoWidgetState extends State<DictadoTecladoWidget> {
     );
   }
 }
-
-
-4. Guía para Generar el Archivo Instalable (.APK)
-Instalar Flutter SDK: Configurar el entorno de desarrollo Flutter en tu computadora.
-Crear el Proyecto: Ejecutar en la terminal: flutter create yo_leo_app
-Reemplazar Código: Pegar el código anterior dentro del archivo lib/main.dart.
-Compilar para Android: Abrir la terminal dentro de la carpeta del proyecto y ejecutar:
-flutter build apk --release
-Obtener el Archivo: El archivo compilado estará listo en la ruta:
-build/app/outputs/flutter-apk/app-release.apk
-Instalación en la Tableta MINEDU: Copiar el archivo app-release.apk a una memoria USB/Pendrive o mediante cable USB a las tabletas Android del MINEDU e instalarlo directamente.
