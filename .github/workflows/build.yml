@@ -24,8 +24,11 @@ jobs:
           flutter-version: '3.19.6'
           channel: 'stable'
 
-      - name: Crear plataformas de soporte
-        run: flutter create . --platforms=android
+      - name: Reconstruir proyecto Android sobre el código real
+        run: |
+          cp lib/main.dart lib/main.dart.bak
+          flutter create . --platforms=android --overwrite
+          cp lib/main.dart.bak lib/main.dart
 
       - name: Obtener dependencias
         run: flutter pub get
