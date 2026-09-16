@@ -24,13 +24,6 @@ jobs:
           flutter-version: '3.19.6'
           channel: 'stable'
 
-      - name: Crear configuracion Android
-        run: |
-          mkdir -p temp_backup
-          cp lib/main.dart temp_backup/main.dart
-          flutter create . --platforms=android --overwrite
-          cp temp_backup/main.dart lib/main.dart
-
       - name: Obtener dependencias
         run: flutter pub get
 
